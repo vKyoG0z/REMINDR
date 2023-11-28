@@ -1,6 +1,11 @@
 const express = require('express');
 const { resolve } = require('path');
 
+const { PrismaClient } = require('@prisma/client')
+
+const prisma = new PrismaClient()
+
+
 const app = express();
 const port = 3010;
 
