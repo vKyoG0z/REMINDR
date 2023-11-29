@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello Express!</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Hello Express!</h1>
+    <form action="/ma-page-de-traitement" method="post">
+        <ul>
+          <li>
+            <label for="identifiant">Nom&nbsp;:</label>
+            <input type="text" id="name" name="user_name" />
+          </li>
+          <li>
+            <label for="mail">E-mail&nbsp;:</label>
+            <input type="email" id="mail" name="user_mail" />
+          </li>
+          <li>
+            <label for="msg">Message&nbsp;:</label>
+            <textarea id="msg" name="user_message"></textarea>
+          </li>
+        </ul>
+      </form>
+      
+    <p>Showing <code>pages/index.html</code></p>
+  </body>
+</html>
