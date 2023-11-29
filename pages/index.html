@@ -8,6 +8,23 @@
   </head>
   <body>
     <h1>Hello Express!</h1>
+    <form action="/ma-page-de-traitement" method="post">
+      <ul>
+        <li>
+          <label for="id">Nom&nbsp;:</label>
+          <input type="text" id="id" name="id" />
+        </li>
+        <li>
+          <label for="password">E-mail&nbsp;:</label>
+          <input type="password" id="password" name="password" />
+        </li>
+        <li>
+          <label for="msg">Message&nbsp;:</label>
+          <textarea id="msg" name="user_message"></textarea>
+        </li>
+      </ul>
+    </form>
+    
     <p>Showing <code>pages/index.html</code></p>
   </body>
 </html>
