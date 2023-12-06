@@ -20,8 +20,12 @@ app.get('/inscription', (req, res) => {
   res.sendFile(resolve(__dirname, 'pages/inscription.html'));
 });
 
+app.get('/connexion', (req, res) => {
+  res.sendFile(resolve(__dirname, 'pages/login.html'));
+});
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 
-//yfbubf
