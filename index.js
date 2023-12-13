@@ -33,6 +33,10 @@ app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/login.html');
 });
 
+app.get('/dashboard', (req, res) => {
+  res.sendFile(__dirname + '/pages/dashboard.html');
+});
+
 // Endpoint pour gérer la soumission du formulaire de connexion
 app.post('/login',async (req, res) => {
   const { username, password } = req.body;
@@ -44,9 +48,10 @@ app.post('/login',async (req, res) => {
 
   if (user && user.password === password) {
     req.session.authenticated = true; // Marquer l'utilisateur comme authentifié
-    res.send('Login successful!');
+    //res.send('Login successful!');
+    res.redirect('/dashboard');
   } else {
-    res.send('Invalid credentials.');
+    res.send('identifiant ou mot de passe incorrect');
   }
 });
 

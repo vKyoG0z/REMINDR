@@ -12,30 +12,30 @@ router.use((req, res, next) => {
   next(); // N'oubliez pas d'appeler next() pour passer à la prochaine fonction dans la chaîne
 });
 
-router.get('/inscription', (req, res) => {
-  res.sendFile(resolve(__dirname, '../pages/inscription.html'));
+router.get('/group', (req, res) => {
+  res.sendFile(resolve(__dirname, '../pages/group.html'));
 });
 
-router.post('/inscription', async (req, res) => {
-    const { email, username, password } = req.body;
+router.post('/group', async (req, res) => {
+  const { group_name } = req.body;
 
   try {
-    const newUser = await prisma.user.create({
+    const newGroup = await prisma.group.create({
       data: {
-        email,
-        username,
-        password,
+        name: group_name,
       },
     });
 
-    res.status(200).json(newUser);
+    res.status(200).json(newGroup);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Erreur lors de la création de l\'utilisateur');
+    res.status(500).send('Erreur lors de la création du groupe');
   }
 });
 
-router.get('/connexion', (req, res) => {
+// À noter que vous avez une autre route GET pour /group qui renvoie la page login.html
+// Cela pourrait être une erreur, assurez-vous que cela correspond à vos besoins
+router.get('/group', (req, res) => {
   res.sendFile(resolve(__dirname, '../pages/login.html'));
 });
 
