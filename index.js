@@ -11,8 +11,15 @@ const port = 3010;
 
 
 app.use(express.static('static'));
+app.use(express.static('pages'));
 app.use(bodyParser.urlencoded({ extended: true })); // Utilisez body-parser pour les données de formulaire
 app.use(bodyParser.json()); 
+
+
+const groupRouter = require('./routers/groupRouter'); 
+app.use('/group', groupRouter); // Utilise '/group' au lieu de '/pages/group'
+
+
 
 // Utilisez le routeur pour les routes liées aux utilisateurs
 const userRouter = require('./routers/UserRouter');
@@ -58,11 +65,29 @@ app.post('/login',async (req, res) => {
 // Endpoint pour vérifier l'état de l'authentification
 app.get('/status', (req, res) => {
   if (req.session.authenticated) {
-    res.send('User is authenticated!');
+    res.send('Utilisateur connecté!');
   } else {
-    res.send('User is not authenticated.');
+    res.send('Utilisateur nest pas connecté.');
   }
 });
+
+
+
+app.use('/pages', express.static(__dirname + '/pages'));
+
+
+//Gestion de la déconnexion
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      res.send('Erreur lors de la déconnexion');
+    } else {
+      res.redirect('/pages/login.html'); // Redirige vers la route de connexion
+    }
+  });
+});
+
+
 
 
 app.listen(port, () => {

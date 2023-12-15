@@ -11,14 +11,13 @@ app.get('/', function(req, res){
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-// for parsing application/json
+
 app.use(bodyParser.json()); 
 
-// for parsing application/xwww-
-app.use(bodyParser.urlencoded({ extended: true })); 
-//form-urlencoded
 
-// for parsing multipart/form-data
+app.use(bodyParser.urlencoded({ extended: true })); 
+
+
 app.use(upload.array()); 
 app.use(express.static('public'));
 

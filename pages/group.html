@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Group Created</title>
+</head>
+<body>
+  <h1>Group Created!</h1>
+
+  <div id="group-info">
+    <!-- Le nom du groupe sera inséré ici -->
+    <p id="group-name"></p>
+  </div>
+
+  <!-- Formulaire pour créer un groupe -->
+  <form action="/group" method="POST">
+    <input type="text" name="groupName" placeholder="Nom du groupe" />
+    <button type="submit">Créer le groupe</button>
+  </form>
+
+  <script>
+    // Récupère le nom du groupe depuis l'URL
+    const params = new URLSearchParams(window.location.search);
+    const groupName = params.get('groupName');
+
+    // Affiche le nom du groupe sur la page
+    const groupNameElement = document.getElementById('group-name');
+    groupNameElement.textContent = `Group Name: ${groupName || 'Aucun nom de groupe spécifié'}`;
+  </script>
+</body>
+</html>
