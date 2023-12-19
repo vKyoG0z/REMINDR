@@ -68,7 +68,7 @@ app.get('/logout', (req, res) => {
     if (err) {
       res.send('Erreur lors de la déconnexion');
     } else {
-      res.redirect('/pages/login.html');
+      res.redirect('/index.html');
     }
   });
 });
@@ -76,3 +76,4 @@ app.get('/logout', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+

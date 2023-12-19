@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #add8e6; /* Fond bleu clair */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#logo {
+    font-size: 3em; 
+    margin-bottom: 30px; 
+}
+
+.redirect-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.redirect-button {
+    text-decoration: none;
+    margin: 0 10px; 
+}
+
+.redirect-button button {
+    background-color: #0066cc;
+    color: white;
+    padding: 15px 30px; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em; 
+}
+
+#logo {
+    font-size: 4em; /* Augmenter la taille du titre */
+    margin-bottom: 30px; /* Espace sous le logo */
+    color: #4b0082; /* Couleur violet foncé */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombre du texte */
+    background-image: linear-gradient(to right, #4b0082, #4169e1); /* Dégradé violet à bleu */
+    -webkit-background-clip: text; /* Pour appliquer le dégradé au texte */
+    -webkit-text-fill-color: transparent; /* Pour rendre le texte transparent */
+    padding: 15px; /* Ajout de marge pour l'effet du dégradé */
+    border-radius: 10px; /* Arrondir les coins */
+    display: inline-block; /* Mettre le titre dans un cadre */
+    background-color: #e6e6fa; /* Couleur de fond pour faire ressortir le violet */
+    padding: 20px; /* Ajout de marge intérieure */
+}

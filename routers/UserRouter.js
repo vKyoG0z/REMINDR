@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 const router = express.Router();
 
 router.get('/inscription', (req, res) => {
-  res.sendFile(resolve(__dirname, '../pages/inscription.html'));
+  res.sendFile(resolve(__dirname, '/inscription.html'));
 });
 
 router.post('/inscription', async (req, res) => {
@@ -20,16 +20,17 @@ router.post('/inscription', async (req, res) => {
         password,
       },
     });
+    res.sendFile(resolve(__dirname, '/login.html'));
+   //res.status(200).json(newUser);
 
-    res.status(200).json(newUser);
   } catch (error) {
     console.error(error);
-    res.status(500).send('Erreur lors de la création de l\'utilisateur');
+    res.status(500).send('Erreur lors de la création de lutilisateur');
   }
 });
 
 router.get('/connexion', (req, res) => {
-  res.sendFile(resolve(__dirname, '../pages/login.html'));
+  res.sendFile(resolve(__dirname, '/login.html'));
 });
 
 module.exports = router;

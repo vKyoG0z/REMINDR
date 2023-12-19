@@ -1,20 +1,32 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #add8e6; /* Fond bleu clair */
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Pour empiler les éléments verticalement */
     align-items: center;
+    justify-content: center;
     height: 100vh;
 }
 
+h1 {
+    font-size: 3em; /* Taille du titre plus grande */
+    color: #0366d6; /* Couleur du titre */
+    margin-bottom: 20px; /* Espace en bas du titre */
+    padding: 10px; /* Ajout de marge interne */
+    background-color: #f0f0f0; /* Couleur de fond pour le titre */
+    border-radius: 8px; /* Arrondi des coins */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Effet d'ombre */
+}
+
 form {
-    background-color: #fff;
+    background-color: #f0f0f0; /* Fond blanc légèrement foncé */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
+    margin-top: 20px;
 }
 
 label {
@@ -36,4 +48,28 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.redirect-button {
+    text-decoration: none;
+    margin: 10px;
+}
+
+h1 {
+    font-size: 3em; /* Taille du titre plus grande */
+    color: #0366d6; /* Couleur du titre */
+    margin-bottom: 20px; /* Espace en bas du titre */
+    padding: 10px; /* Ajout de marge interne */
+    background-color: #e6e6fa; /* Nouvelle couleur de fond pour le titre */
+    border-radius: 8px; /* Arrondi des coins */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Effet d'ombre */
+}
+
+form {
+    background-color: #e6e6fa; /* Nouvelle couleur de fond pour le formulaire */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    margin-top: 20px;
 }

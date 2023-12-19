@@ -4,18 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulaire d'Inscription</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="accueil.css"> <!-- Ajout du lien vers le nouveau fichier CSS -->
 </head>
 <body>
-  <h1> Cliquez pour vous inscrire : </h1>
-  <a href="/users/inscription" class="redirect-button">
-    <button>Inscription</button>
-   </a>
-   <br><br>
-   <h1> Si vous possedez déjà un compte cliquez ici :</h1>
-   <a href = "/users/connexion" class="redirect-button">
-      <button>Connexion</button>
-
-   </a>
+    <h1 id="logo">Remindr</h1>
+    <div class="redirect-buttons">
+        <a href="pages/inscription.html" class="redirect-button">
+            <button>Inscription</button>
+        </a>
+        <a href="pages/login.html" class="redirect-button">
+            <button>Connexion</button>
+        </a>
+    </div>
 </body>
 </html>
