@@ -11,10 +11,11 @@ const loginUser = async (req, res) => {
   });
 
   if (user && user.password === password) {
+    req.session.userId = user.id; // Enregistre l'ID de l'utilisateur dans la session
     req.session.authenticated = true;
-    res.redirect('/dashboard'); //Redirige vers son dashboard
+    res.redirect('/dashboard'); // Redirige vers le tableau de bord après la connexion
   } else {
-    res.send('identifiant ou mot de passe incorrect');
+    res.send('Identifiant ou mot de passe incorrect');
   }
 };
 
