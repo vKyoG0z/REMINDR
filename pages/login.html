@@ -3,9 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Login</title>
+
+  <style>
+    .home-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  </style>
 </head>
 <link rel="stylesheet" href="style.css">
 <body>
+  <a href="../index.html" class="home-button">
+    <button>Accueil</button>
+  </a>
+
   <h1>Connexion</h1>
   <form action="/login" method="post">
     <input type="text" name="username" placeholder="Username" required><br>

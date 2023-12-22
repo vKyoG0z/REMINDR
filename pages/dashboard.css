@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Fond de couleur claire */
+    background-color: #f2f0fa; /* Fond de couleur violet clair */
     margin: 0;
     padding: 20px;
     display: flex;
@@ -9,15 +9,16 @@ body {
     justify-content: center;
     height: 100vh;
     text-align: center;
+    color: #3a3a3a; /* Couleur de texte plus sombre */
 }
 
 h1 {
-    color: #333; /* Couleur de texte plus sombre */
+    color: #6a5acd; /* Couleur violette pour le titre */
 }
 
 form {
     margin-top: 20px;
-    background-color: #fff; /* Fond blanc pour le formulaire */
+    background-color: #ffffff; /* Fond blanc pour le formulaire */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,6 +28,7 @@ form {
 label {
     display: block;
     margin-bottom: 8px;
+    color: #6a5acd; /* Couleur violette pour les étiquettes */
 }
 
 input[type="text"],
