@@ -7,19 +7,14 @@ model User {
   email    String   @unique
   username String   @unique
   password String
-  groups   Group[]  @relation("GroupMembers") // Relation avec les groupes
+  groups   Group[]  @relation("GroupMembers")
 }
-
 
 model Group {
   id       Int      @id @default(autoincrement())
   name     String
-  // Autres détails du groupe à ajouter
-
-  // Relation avec l'utilisateur
   members  User[]   @relation("GroupMembers")
 }
-
 
 
 generator client {

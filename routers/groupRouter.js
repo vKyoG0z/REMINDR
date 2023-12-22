@@ -8,7 +8,7 @@ router.post('/create-group', async (req, res) => {
   const userId = req.session.userId; // Obtient l'ID de l'utilisateur connecté depuis la session
 
   try {
-    const newGroup = await prisma.groupe.create({
+    const newGroup = await prisma.group.create({
       data: {
         name: groupName,
         members: { connect: { id: userId } } // Associe l'utilisateur au groupe
