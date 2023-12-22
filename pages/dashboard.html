@@ -10,14 +10,35 @@
 <body>
   <h1>Welcome to the Dashboard!</h1>
 
-
-  <form action="/group" method="post">
-    <label for="groupName">Group Name:</label>
+  <!-- Premier formulaire pour créer un groupe -->
+  <form action="/group/create-group" method="POST">
+    <label for="groupName">Nom du groupe:</label>
     <input type="text" id="groupName" name="groupName" required><br>
-
-    <input type="submit" value="Create Group">  <!-- boutton de creation de groupe -->
+    <button type="submit">Créer le groupe</button>
   </form>
 
   <a href="/logout">Logout</a>
+
+  <!-- Code pour afficher les groupes -->
+  <h2>Groupes:</h2>
+  <ul id="group-list">
+    <!-- Liste des groupes affichée ici -->
+  </ul>
+
+  <script>
+    // JavaScript pour récupérer et afficher les groupes du tableau de bord
+    fetch('/group/user-groups') // Endpoint pour obtenir les groupes de l'utilisateur connecté
+      .then(response => response.json())
+      .then(groups => {
+        const groupList = document.getElementById('group-list');
+        groups.forEach(group => {
+          const listItem = document.createElement('li');
+          listItem.textContent = group.name;
+          groupList.appendChild(listItem);
+        });
+      })
+      .catch(error => console.error(error));
+  </script>
+
 </body>
 </html>
