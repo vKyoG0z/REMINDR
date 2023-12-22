@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { PrismaClient, Prisma } = require('@prisma/client');
+const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 router.post('/create-group', async (req, res) => {
@@ -26,14 +26,31 @@ router.post('/create-group', async (req, res) => {
       },
     });
 
-    res.redirect('/dashboard'); // Redirige vers le tableau de bord après la création du groupe
+    
   } catch (error) {
     console.error(error);
     res.status(500).send('Erreur lors de la création du groupe');
   }
 });
 
-module.exports = router;
+router.get('/user-groups', async (req, res) => {
+  const userId = req.session.userId; // Obtient l'ID de l'utilisateur connecté depuis la session
 
+  try {
+    const userGroups = await prisma.user.findUnique({
+      where: {
+        id: userId,
+      },
+      select: {
+        groups: true,
+      },
+    });
+
+    res.status(200).json(userGroups.groups);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Erreur lors de la récupération des groupes de l\'utilisateur');
+  }
+});
 
 module.exports = router;
