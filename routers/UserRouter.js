@@ -5,10 +5,12 @@ const prisma = new PrismaClient();
 
 const router = express.Router();
 
+//Route vers la page d'inscription
 router.get('/inscription', (req, res) => {
   res.sendFile(resolve(__dirname, '/inscription.html'));
 });
 
+//Recupere les donnéesdu formulaire d'inscription et créer l'utilisateur
 router.post('/inscription', async (req, res) => {
   const { email, username, password } = req.body;
 
@@ -20,7 +22,7 @@ router.post('/inscription', async (req, res) => {
         password,
       },
     });
-    res.sendFile(resolve(__dirname, '/login.html'));
+    res.redirect(`/pages/login.html`);
    //res.status(200).json(newUser);
 
   } catch (error) {
@@ -29,6 +31,7 @@ router.post('/inscription', async (req, res) => {
   }
 });
 
+//Route vers la page de connexion
 router.get('/connexion', (req, res) => {
   res.sendFile(resolve(__dirname, '/login.html'));
 });

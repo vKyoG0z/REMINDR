@@ -1,10 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const getLoginPage = (req, res) => {
-  res.sendFile(__dirname + '/../pages/login.html');
-};
-
+//Gére la connexion en verifant le mot de passe et le nom d'utilisateur
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
   const user = await prisma.user.findUnique({
@@ -15,12 +12,13 @@ const loginUser = async (req, res) => {
 
   if (user && user.password === password) {
     req.session.authenticated = true;
-    res.redirect('/dashboard');
+    res.redirect('/dashboard'); //Redirige vers son dashboard
   } else {
     res.send('identifiant ou mot de passe incorrect');
   }
 };
 
+//Permet de verifier le status de l'utilisaateur (connecter ou pas)
 const checkStatus = (req, res) => {
   if (req.session.authenticated) {
     res.send('Utilisateur connecté!');
@@ -29,6 +27,7 @@ const checkStatus = (req, res) => {
   }
 };
 
+//Deconnexion de l'utilisateur
 const logoutUser = (req, res) => {
   req.session.destroy((err) => {
     if (err) {
@@ -39,4 +38,4 @@ const logoutUser = (req, res) => {
   });
 };
 
-module.exports = { getLoginPage, loginUser, checkStatus, logoutUser };
+module.exports = { loginUser, checkStatus, logoutUser };

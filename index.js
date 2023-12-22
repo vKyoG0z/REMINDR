@@ -1,3 +1,4 @@
+//Module utilisé
 const express = require('express');
 const { resolve } = require('path');
 const handlebars = require('handlebars');
@@ -19,59 +20,47 @@ app.use(session({
   saveUninitialized: true
 }));
 
-const groupRouter = require('./routers/groupRouter');
+//Récuperation des Routers
+const groupRouter = require('./routers/groupRouter'); //Import de groupRouter
 app.use('/group', groupRouter);
 
-const userRouter = require('./routers/UserRouter');
+const userRouter = require('./routers/UserRouter'); //Import de UserRouter
 app.use('/users', userRouter); // Utilisation du routeur des utilisateurs
 
+const userController = require('./controllers/UserController'); //Import de userControlle
+
+
+//Page de base à la racine du projet
 app.get('/', (req, res) => {
   res.sendFile(resolve(__dirname, 'pages/index.html'));
 });
 
+//Connexion
 app.get('/login', (req, res) => {
   res.sendFile(__dirname + '/login.html');
 });
 
+//Dashboard
 app.get('/dashboard', (req, res) => {
   res.sendFile(__dirname + '/pages/dashboard.html');
 });
 
 app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  const user = await prisma.user.findUnique({
-    where: {
-      username: username
-    }
-  });
-
-  if (user && user.password === password) {
-    req.session.authenticated = true;
-    res.redirect('/dashboard');
-  } else {
-    res.send('identifiant ou mot de passe incorrect');
-  }
+  await userController.loginUser(req, res);
 });
 
+
+
 app.get('/status', (req, res) => {
-  if (req.session.authenticated) {
-    res.send('Utilisateur connecté!');
-  } else {
-    res.send('Utilisateur nest pas connecté.');
-  }
+  userController.checkStatus(req, res);
 });
 
 app.use('/pages', express.static(__dirname + '/pages'));
 
 app.get('/logout', (req, res) => {
-  req.session.destroy((err) => {
-    if (err) {
-      res.send('Erreur lors de la déconnexion');
-    } else {
-      res.redirect('/index.html');
-    }
-  });
+  userController.logoutUser(req, res);
 });
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
